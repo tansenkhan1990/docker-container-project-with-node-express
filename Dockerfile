@@ -1,16 +1,23 @@
-FROM node:14
+# Specify the base image
+FROM node:14-alpine
 
+# Set the working directory inside the container
 WORKDIR /app
 
-# install app dependencies
-COPY package.json .
-COPY yarn.lock .
+# Copy package.json and package-lock.json into the container
+COPY package*.json ./
 
-RUN yarn add global react-scripts@4.0.3
-RUN yarn 
+# Install app dependencies
+RUN npm install
 
+# Copy all app files into the container
 COPY . .
 
+# Build the React app
+RUN npm run build
+
+# Expose port 3000 for the React app to run on
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+# Start the app
+CMD ["npm", "start"]
