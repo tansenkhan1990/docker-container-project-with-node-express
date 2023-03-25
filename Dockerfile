@@ -5,7 +5,7 @@ FROM node:14-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json into the container
-COPY package*.json ./
+# COPY package*.json ./
 
 # Install app dependencies
 RUN npm install
@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the React app
-RUN npm run build
+# RUN npm run build
 
 # Expose port 3000 for the React app to run on
 EXPOSE 3000
