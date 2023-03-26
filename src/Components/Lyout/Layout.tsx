@@ -7,7 +7,7 @@ const Layout: React.FC = () => {
   const naigate = useNavigate();
   useEffect(() => {
     naigate("home");
-  }, []);
+  }, [naigate]);
   return (
     <>
       <Container>
